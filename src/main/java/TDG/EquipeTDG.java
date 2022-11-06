@@ -142,14 +142,12 @@ public class EquipeTDG extends AbstractTDG<Equipe> {
             assert findById(t.getId()) == t;
             pst.setLong(1, t.getId());
             int result = pst.executeUpdate();
-            System.out.println(result);
             assert result != 1;
             
             try (PreparedStatement pst2 = TDGRegistry.getConnection().prepareStatement(DELETE_EQUIPE)) {
                 assert findById(t.getId()) == t;
                 pst2.setLong(1, t.getId());
                 result = pst2.executeUpdate();
-                System.out.println(result);
                 assert result == 1;
             }
             return t;

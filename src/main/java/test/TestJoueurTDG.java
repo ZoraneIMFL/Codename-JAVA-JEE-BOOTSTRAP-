@@ -45,20 +45,30 @@ public class TestJoueurTDG {
 	public void InsertingElement() throws SQLException {
 		j1 = jtdg.insert(j1);
 		assertNotEquals(0, j1.getId());
-		Joueur a2 = jtdg.findById(j1.getId());
-		assertEquals(j1, a2);
-		assertSame(j1, a2);
+		
+		assertEquals(j1.getId(), jtdg.findById(j1.getId()).getId());
+		assertSame(j1, jtdg.findById(j1.getId()));
 	}
 	
 	@Test
 	public void DeletingElement() throws SQLException {
 		j1 = jtdg.insert(j1);
-		assertNotEquals(0, j1.getId());
+		
+		
 		Joueur j2 = jtdg.findById(j1.getId());
 		assertEquals("ZoraneTheGreat", j2.getPseudo());
 		jtdg.delete(j2);
-		assertNull(jtdg.findById(1));
+		assertNull(jtdg.findById(j1.getId()));
 
+	}
+	@Test
+	public void UpdatingElement() throws SQLException {
+		j1 = jtdg.insert(j1);
+		assertEquals("ZoraneTheGreat", j1.getPseudo());
+		j1.setPseudo("NouveauPseudo"); 
+		jtdg.update(j1); 
+		assertEquals(jtdg.findById(j1.getId()).getPseudo(), "NouveauPseudo"); 
+		
 	}
 
 

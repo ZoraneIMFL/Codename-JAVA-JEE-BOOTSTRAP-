@@ -2,7 +2,6 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
@@ -78,7 +77,6 @@ public class TestEquipeTDG {
 
 		etdg.delete(e1);
 		assertNull(etdg.findById(e1.getId()));
-		
 
 	}
 
@@ -91,14 +89,13 @@ public class TestEquipeTDG {
 		e1.setListeJoeurs(j1.getId());
 		e1.setListeJoeurs(j2.getId());
 		e1 = etdg.insert(e1);
-		
-		
+		assertEquals(etdg.findById(e1.getId()).getScore(), 0);
+
 		e1.setNomEquipe("NouveauNom");
-		e1.setScore(3); 
-		
-		etdg.update(e1); 
-		
-		
+		e1.setScore(3);
+		etdg.update(e1);
+		assertEquals(etdg.findById(e1.getId()).getNomEquipe(), "NouveauNom");
+		assertNotEquals(etdg.findById(e1.getId()).getScore(), 0);
 
 	}
 
