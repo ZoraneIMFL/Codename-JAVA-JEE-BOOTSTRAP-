@@ -11,10 +11,14 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
+
 import Persistable.Joueur;
 import TDG.JoueurTDG;
 import TDG.TDGRegistry;
 
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class TestJoueurTDG {
 	private JoueurTDG jtdg;
 	private Joueur j1 = new Joueur("ZoraneTheGreat", 0, "espion");

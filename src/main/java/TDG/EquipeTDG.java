@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import Persistable.Equipe;
+import Persistable.Joueur;
 
 public class EquipeTDG extends AbstractTDG<Equipe> {
 
@@ -28,6 +29,7 @@ public class EquipeTDG extends AbstractTDG<Equipe> {
 	
 	private static final String DELETE_EQUIPE = "DELETE FROM Equipe e WHERE e.ID = ?";
 	private static final String DELETE_JOUEUR_EQUIPE = "DELETE FROM EquipeJoueurs e WHERE e.IDEQUIPE = ?";
+	
 
 	@Override
 	public void createTable() throws SQLException {
@@ -91,7 +93,7 @@ public class EquipeTDG extends AbstractTDG<Equipe> {
 				try (PreparedStatement pst2 = TDGRegistry.getConnection().prepareStatement(INSERT_INTO_JOUEUR_EQUIPE,
 						Statement.RETURN_GENERATED_KEYS)) {
 					pst2.setLong(1, t.getId());
-					pst2.setLong(2, t.getListeJoeurs().get(i));
+					pst2.setLong(2, t.getListeJoeurs().get(i).getId());
 					int result2 = pst2.executeUpdate();
 					assert result2 == 1;
 				}
@@ -125,7 +127,7 @@ public class EquipeTDG extends AbstractTDG<Equipe> {
                     try(PreparedStatement pst2 = TDGRegistry.getConnection().prepareStatement(FIND_BY_ID_JOUEUR_EQUIPE)){
                     	pst.setLong(1, t.getId());
                     	while (rs.next()) {
-                    		t.setListeJoeurs(rs.getLong(1));
+                    		t.setListeJoueurs(TDGRegistry.findTDG(Joueur.class).findById(rs.getLong(1)));
                     	}
                     	
                     }

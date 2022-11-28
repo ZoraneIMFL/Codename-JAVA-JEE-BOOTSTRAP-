@@ -2,17 +2,17 @@ package Persistable;
 
 public class Partie implements Persistable {
 	
-	private long idEquipe1; 
-	private long idEquipe2; 
+	private Equipe Equipe1; 
+	private Equipe Equipe2; 
 	private long id; 
 	private String equipeGagnante; 
 	
 	public Partie () {
 		
 	}
-	public Partie (long idEquipe1, long idEquipe2) {
-		this.idEquipe1 = idEquipe1; 
-		this.idEquipe2 = idEquipe2; 
+	public Partie (Equipe Equipe1, Equipe Equipe2) {
+		this.Equipe1 = Equipe1; 
+		this.Equipe2 = Equipe2; 
 		
 	}
 	
@@ -25,26 +25,43 @@ public class Partie implements Persistable {
 		this.id = id; 
 		
 	}
-
-
-	public long getIdEquipe2() {
-		return idEquipe2;
+	
+	public Equipe getEquipe2() {
+		return Equipe2;
 	}
 
 
-	public void setIdEquipe2(long idEquipe2) {
-		this.idEquipe2 = idEquipe2;
+	public void setEquipe2(Equipe Equipe2) {
+		this.Equipe2 = Equipe2;
 	}
 
 
-	public long getIdEquipe1() {
-		return idEquipe1;
+	public Equipe getEquipe1() {
+		return Equipe1;
 	}
 
 
-	public void setIdEquipe1(long idEquipe1) {
-		this.idEquipe1 = idEquipe1;
+	public void setEquipe1(Equipe Equipe1) {
+		this.Equipe1 = Equipe1;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public String getEquipeGagnante() {
 		return equipeGagnante;
 	}

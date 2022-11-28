@@ -7,12 +7,13 @@ public class Equipe implements Persistable{
 	private long Id;
 	private int score; 
 	private String nomEquipe; 
-	private ArrayList < Long > ListeJoueurs = new ArrayList < Long > ();
+	private ArrayList < Joueur > ListeJoueurs = new ArrayList < Joueur > ();
 	
 	public Equipe() {
 		
 	}
-	public Equipe(String nomEquipe, int score) {
+	public Equipe(String nomEquipe, int score, long id) {
+		this.Id = id; 
 		this.nomEquipe = nomEquipe; 
 		this.score =score; 
 	}
@@ -29,13 +30,13 @@ public class Equipe implements Persistable{
 	}
 
 
-	public ArrayList < Long > getListeJoeurs() {
+	public ArrayList < Joueur > getListeJoeurs() {
 		return ListeJoueurs;
 	}
 
 
-	public void setListeJoeurs(Long idJoueur) {
-		this.ListeJoueurs.add(idJoueur);
+	public void setListeJoueurs(Joueur Joueur) {
+		this.ListeJoueurs.add(Joueur);
 	}
 
 

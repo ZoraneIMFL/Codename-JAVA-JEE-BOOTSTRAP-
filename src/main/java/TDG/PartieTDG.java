@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import Persistable.Equipe;
 import Persistable.Joueur;
 import Persistable.Partie;
 
@@ -45,8 +46,8 @@ public class PartieTDG extends AbstractTDG<Partie>{
                 if (rs.next()) {
                     t = new Partie();
                     t.setId(rs.getLong(1));
-                    t.setIdEquipe2(rs.getLong(3));
-                    t.setIdEquipe1(rs.getLong(2));
+                    t.setEquipe2(TDGRegistry.findTDG(Equipe.class).findById(rs.getLong(3)));
+                    t.setEquipe1(TDGRegistry.findTDG(Equipe.class).findById(rs.getLong(2)));
                     t.setEquipeGagnante(CREATE);
                 }
             }
@@ -57,8 +58,8 @@ public class PartieTDG extends AbstractTDG<Partie>{
 	@Override
 	protected Partie insertIntoDB(Partie t) throws SQLException {
 		try (PreparedStatement pst = TDGRegistry.getConnection().prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) { 
-            pst.setLong(1, t.getIdEquipe1());
-            pst.setLong(2, t.getIdEquipe2());
+            pst.setLong(1, t.getEquipe1().getId());
+            pst.setLong(2, t.getEquipe2().getId());
             pst.setString(3, t.getEquipeGagnante());
             int result = pst.executeUpdate();
             assert result == 1;
@@ -75,8 +76,8 @@ public class PartieTDG extends AbstractTDG<Partie>{
 	protected Partie updateIntoDB(Partie t) throws SQLException {
 		try (PreparedStatement pst = TDGRegistry.getConnection().prepareStatement(UPDATE)) {
             assert findById(t.getId()) == t;
-            pst.setLong(1, t.getIdEquipe1());
-            pst.setLong(2,  t.getIdEquipe1());
+            pst.setLong(1, t.getEquipe1().getId());
+            pst.setLong(2,  t.getEquipe2().getId());
             pst.setString(3, t.getEquipeGagnante());
             
             pst.setLong(4, t.getId());
@@ -93,8 +94,8 @@ public class PartieTDG extends AbstractTDG<Partie>{
             try (ResultSet rs = pst.executeQuery()) {
                 if (rs.next()) {
                     t.setId(rs.getLong(1));
-                    t.setIdEquipe1(rs.getLong(2));
-                    t.setIdEquipe2(rs.getLong(3));
+                    t.setEquipe1(TDGRegistry.findTDG(Equipe.class).findById(rs.getLong(2)));
+                    t.setEquipe2(TDGRegistry.findTDG(Equipe.class).findById(rs.getLong(3)));
                 }
             }
         }
