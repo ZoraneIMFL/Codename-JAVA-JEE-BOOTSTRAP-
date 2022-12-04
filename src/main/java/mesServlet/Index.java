@@ -63,8 +63,9 @@ public class Index extends HttpServlet {
 			if (nameAttribute.contains("choixPartie")){
 				session.setAttribute("idPartie",request.getParameter(nameAttribute).toString());
 //				this.getServletContext().getRequestDispatcher("/PreparationPartie.jsp").forward(request, response);
-				response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");//à changer ! 
 				session.setAttribute("créateur", false);
+				response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");//à changer ! 
+				
 			}
 			if (nameAttribute.contains("choix")) {
 
@@ -85,7 +86,7 @@ public class Index extends HttpServlet {
 					
 					request.getServletContext().setAttribute("listePartie",listeIdPartie );
 					request.getServletContext().setAttribute("mutex", true); 
-					System.out.println("Redirection à la page creationPartie.jsp");
+//					System.out.println("Redirection à la page creationPartie.jsp");
 					compteur_id_partie++; 
 //					this.getServletContext().getRequestDispatcher("/PreparationPartie.jsp").forward(request, response);
 					response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");//à changer !
@@ -96,11 +97,11 @@ public class Index extends HttpServlet {
 //					System.out.println(Collections.list(parametresServlet).size());
 					if (Collections.list(parametresServlet).size() >= 14) {
 						System.out.println(parametresServlet);
-						System.out.println("Redirection à la page rejoindrePartie.jsp");
+//						System.out.println("Redirection à la page rejoindrePartie.jsp");
 
 					}
 					if (!parametresServlet.hasMoreElements()) {
-						System.out.println("Pas de serveurs disponibles ! ");
+//						System.out.println("Pas de serveurs disponibles ! ");
 					}
 //					response.sendRedirect("http://localhost:8080/CodeName/");
 					this.getServletContext().getRequestDispatcher("/RejoindrePartie.jsp").forward(request, response);

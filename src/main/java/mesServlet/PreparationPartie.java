@@ -40,8 +40,7 @@ public class PreparationPartie extends HttpServlet {
 			session.setAttribute("créateur", false); 
 		}
 		else {
-			System.out.println("bonsoirrrrrdsfsdfsdfsdfrrrrrr");
-			session.setAttribute("Partie", this.getServletContext().getAttribute((String) session.getAttribute("idPartie"))); 
+			session.setAttribute("partieCourante", this.getServletContext().getAttribute((String) session.getAttribute("idPartie")));
 		}
 		
 		this.getServletContext().getRequestDispatcher("/PreparationPartie.jsp").forward(request, response);
@@ -56,7 +55,7 @@ public class PreparationPartie extends HttpServlet {
 		
 		HttpSession session = request.getSession(true);
 		Enumeration<String> parametres = request.getParameterNames();
-		System.out.println("msqdfljkqsdmfljsqdmlfkqsjdfmlsqdkfjqsmfljk");
+//		System.out.println("msqdfljkqsdmfljsqdmlfkqsjdfmlsqdkfjqsmfljk");
 		while (parametres.hasMoreElements()) {
 			String nameAttribute = parametres.nextElement();
 			if (nameAttribute.contains("choixRoleEquipe1")) {
@@ -69,13 +68,13 @@ public class PreparationPartie extends HttpServlet {
 					pCourant.getEquipe1().setListeJoueurs(jCourant);
 					this.getServletContext().setAttribute((String) session.getAttribute("idPartie"), pCourant); 
 					
-					this.getServletContext().getRequestDispatcher("/PreparationPartie.jsp").forward(request, response);
+					this.doGet(request, response); 
 				}
 				if (request.getParameter(nameAttribute).toString().contains("EspionEquipe1")) {
 
 					jCourant.setRole("Espion");
 					pCourant.getEquipe1().setListeJoueurs(jCourant);
-					this.getServletContext().getRequestDispatcher("/PreparationPartie.jsp").forward(request, response);
+					this.doGet(request, response);
 				}
 			}
 			if (nameAttribute.contains("choixRoleEquipe2")) {
@@ -85,12 +84,12 @@ public class PreparationPartie extends HttpServlet {
 				if (request.getParameter(nameAttribute).toString().contains("DecodeurEquipe2")) {
 					jCourant.setRole("Decodeur");
 					pCourant.getEquipe2().setListeJoueurs(jCourant);
-					this.getServletContext().getRequestDispatcher("/PreparationPartie.jsp").forward(request, response);
+					this.doGet(request, response);
 				}
 				if (request.getParameter(nameAttribute).toString().contains("EspionEquipe2")) {
 					jCourant.setRole("Espion");
 					pCourant.getEquipe2().setListeJoueurs(jCourant);
-					this.getServletContext().getRequestDispatcher("/PreparationPartie.jsp").forward(request, response);
+					this.doGet(request, response);
 				}
 			}
 		}
