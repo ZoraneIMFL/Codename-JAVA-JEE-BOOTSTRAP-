@@ -88,12 +88,12 @@ public class EquipeTDG extends AbstractTDG<Equipe> {
 					((Equipe) t).setId(keys.getLong(1));
 				}
 			}
-			for (int i = 0; i < t.getListeJoeurs().size(); i++) {
+			for (int i = 0; i < t.getListeJoueurs().size(); i++) {
 
 				try (PreparedStatement pst2 = TDGRegistry.getConnection().prepareStatement(INSERT_INTO_JOUEUR_EQUIPE,
 						Statement.RETURN_GENERATED_KEYS)) {
 					pst2.setLong(1, t.getId());
-					pst2.setLong(2, t.getListeJoeurs().get(i).getId());
+					pst2.setLong(2, t.getListeJoueurs().get(i).getId());
 					int result2 = pst2.executeUpdate();
 					assert result2 == 1;
 				}

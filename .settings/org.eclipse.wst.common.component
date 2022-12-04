@@ -2,7 +2,7 @@
                 
     
     
-    <wb-module deploy-name="codename2223">
+    <wb-module deploy-name="CodeName">
                                 
         
         
@@ -15,10 +15,10 @@
                                 
         
         
-        <property name="java-output-path" value="/codename2223/build/classes"/>
+        <property name="java-output-path" value="/CodeName/build/classes"/>
                         
         
-        <property name="context-root" value="codename2223"/>
+        <property name="context-root" value="CodeName"/>
                             
     
     

@@ -30,7 +30,7 @@ public class Equipe implements Persistable{
 	}
 
 
-	public ArrayList < Joueur > getListeJoeurs() {
+	public ArrayList < Joueur > getListeJoueurs() {
 		return ListeJoueurs;
 	}
 
