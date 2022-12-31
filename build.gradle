@@ -19,6 +19,8 @@ dependencies {
 	implementation 'org.apache.derby:derbyshared:10.15.2.0'
 	implementation 'org.apache.derby:derbytools:10.15.2.0'
 	implementation 'org.java-websocket:Java-WebSocket:1.5.3'
+	
+	implementation 'javax.servlet:javax.servlet-api:4.0.1'
 
 }
 
