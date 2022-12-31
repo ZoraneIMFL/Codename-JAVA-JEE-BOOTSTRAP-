@@ -15,7 +15,7 @@
 html, body {
 	height: 100%;
 	background-color: #152733;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 
@@ -232,7 +232,7 @@ html, body {
 	color: rgb(252, 252, 252);
 }
 
-.carte .bleu {
+.carte .bleu{
 	border-color: #5fb7e7;
 	background-color: rgb(17, 133, 191, 0.5);
 	color: #5fb7e7;

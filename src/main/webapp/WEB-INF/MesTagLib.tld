@@ -13,30 +13,79 @@
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
-		<attribute>
-			<name>listeCartes</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
 
 		<attribute>
 			<name>role</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
-		
-		
+
+
 		<attribute>
 			<name>tourActuel</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
-		
+
 		<attribute>
 			<name>couleurEquipe</name>
 			<required>true</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 
+
+
+
 	</tag>
+	<tag>
+		<name>AffichageDeroulement</name>
+		<tag-class>mesTags.AffichageDeroulement</tag-class>
+		<body-content>JSP</body-content>
+
+
+		<attribute>
+			<name>role</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+
+		<attribute>
+			<name>tourActuel</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>couleurEquipe</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>jCourant</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>equipeRouge</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>equipeBleue</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+		<attribute>
+			<name>indice</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+
+	</tag>
+
+
 </taglib>

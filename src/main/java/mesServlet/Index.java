@@ -41,7 +41,6 @@ public class Index extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		if (session.getAttribute("idPartie")!=null) {
 			
-			System.out.println("redirection PREPARATION PARTIE");
 			response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");
 			
 		}
@@ -49,7 +48,7 @@ public class Index extends HttpServlet {
 			this.getServletContext().getRequestDispatcher("/RejoindrePartie.jsp").forward(request, response);
 		}
 		else {
-			System.out.println("redirection INDEX");
+
 			this.getServletContext().getRequestDispatcher("/Index.jsp").forward(request, response);
 		}
 
@@ -68,7 +67,6 @@ public class Index extends HttpServlet {
 	private int chercherIndexPartie(ArrayList<String> liste, String id) {
 		int i = 0;
 		for (String p : liste) {
-			System.out.println("p est " + p);
 			if (p.equals(id)) {
 				return i;
 			}
@@ -106,14 +104,12 @@ public class Index extends HttpServlet {
 				Partie pCourant = (Partie) this.getServletContext()
 						.getAttribute((String) session.getAttribute("idPartie"));
 				if (pCourant.isStarted()) {
-					System.out.println("Partie Partie deja lancee donc plus disponible lancee donc plus disponible");
 					ArrayList<String> liste = (ArrayList<String>) request.getServletContext()
 							.getAttribute("listePartie");
 					int index = chercherIndexPartie(liste, id);
-					System.out.println("id est " + id);
-					System.out.println(index);
+
 					if (index != -1) {
-						System.out.println("on supprime");
+
 						liste.remove(index);
 						response.sendRedirect("http://localhost:8080/codename2223/Index");
 					}
@@ -128,7 +124,7 @@ public class Index extends HttpServlet {
 				if (request.getParameter(nameAttribute).toString().contains("CreerUnePartie")) {
 					Partie pCourante = creationPartie();
 					session.setAttribute(String.valueOf(compteur_id_partie) + "joueurHote", j);
-					System.out.println(compteur_id_partie);
+
 					session.setAttribute("idPartie", String.valueOf(compteur_id_partie));
 					session.setAttribute("partie", pCourante);
 					session.setAttribute("createur_" + session.getAttribute("idPartie"), true);
@@ -148,7 +144,7 @@ public class Index extends HttpServlet {
 
 					Enumeration<String> parametresServlet = this.getServletContext().getAttributeNames();
 					if (Collections.list(parametresServlet).size() >= 14) {
-						System.out.println(parametresServlet);
+
 					}
 					session.setAttribute("choixFait", true);
 					this.getServletContext().getRequestDispatcher("/RejoindrePartie.jsp").forward(request, response);

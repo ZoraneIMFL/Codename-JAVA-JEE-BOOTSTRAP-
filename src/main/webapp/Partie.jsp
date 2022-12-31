@@ -34,17 +34,41 @@
 		<div class="navbar navbar-expand-lg navbar-dark"
 			style="background-color: black">
 
-			<h3 style="color: white">CodeName du Z // Deroulement---Game---></h3>
-			<div style="width: 50%; margin: 0 auto; color:white">salut tout le monde je ne suis pas votre ami </div>
+			<h3 style="color: white">CodeName du Z</h3>
+
+
+
+
+
 			<div class="ml-auto pseudo">${objetJoueur.getPseudo()}</div>
 		</div>
+		<div class="row mx-auto">
+
+			<div class="text-center"
+				style="background-color: rgba(249, 249, 249, 0.2); color: white; width: 100%; left: 50%">
+
+
+				<ma:AffichageDeroulement role="${role}" tourActuel="${tourActuel}"
+					couleurEquipe="${couleurEquipe}" jCourant="${objetJoueur}"
+					equipeRouge="${partieCourante.getEquipe1()}"
+					equipeBleue="${partieCourante.getEquipe2()}"
+					indice="<%=request.getServletContext().getAttribute(\"indice\"+session.getAttribute(\"idPartie\"))%>" />
+
+
+			</div>
+
+
+		</div>
+
+
 		<div class="row pt-3 mt-3">
 			<div class="col sideRouge">
 				<div
-					class="navbar navbar-expand-lg navbar-dark text-center titreEquipe">Equipe
-					Rouge</div>
+					class="navbar navbar-expand-lg navbar-dark text-center titreEquipe">
+					Equipe Rouge - Score :
+					<%=request.getServletContext().getAttribute("scoreRouge" + session.getAttribute("idPartie"))%></div>
 				<div class="equipe-rouge">
-					<!-- Affichage des joueurs de l'équipe rouge -->
+
 					<c:forEach var="joueur"
 						items="${partieCourante.getEquipe1().getListeJoueurs()}">
 						<div class="joueur">
@@ -63,16 +87,13 @@
 
 
 			<div class="col col-9">
+
 				<div class="grille-milieu">
 					<form class="requires-validation" action="Partie" method="post"
 						novalidate>
 						<div class="container  text-center">
 
-							<%-- 							<c:if test="<%=request.getServletContext().getAttribute("tourActuel" + session.getAttribute("idPartie")).equals("EquipeRougeEspion")%>"></c:if>
-							<c:if test="<%=request.getServletContext().getAttribute("tourActuel" + session.getAttribute("idPartie")).equals("EquipeRougeDécodeur")%>"></c:if>
-							<c:if test="<%=request.getServletContext().getAttribute("tourActuel" + session.getAttribute("idPartie")).equals("EquipeBleueEspion")%>"></c:if>
-							<c:if test="<%=request.getServletContext().getAttribute("tourActuel" + session.getAttribute("idPartie")).equals("EquipeBleueDécodeur")%>"></c:if>
-						 --%>
+
 							<ma:GrilleCarteTagLib listeCartes="${listeCartes}" role="${role}"
 								tourActuel="${tourActuel}" couleurEquipe="${couleurEquipe}" />
 
@@ -106,8 +127,9 @@
 			</div>
 			<div class="col sideBleu">
 				<div
-					class="navbar navbar-expand-lg navbar-dark text-center titreEquipe">Equipe
-					Bleue</div>
+					class="navbar navbar-expand-lg navbar-dark text-center titreEquipe">
+					Equipe Bleue - Score :
+					<%=request.getServletContext().getAttribute("scoreBleu" + session.getAttribute("idPartie"))%></div>
 				<div class="equipe-bleue">
 
 					<c:forEach var="joueur"

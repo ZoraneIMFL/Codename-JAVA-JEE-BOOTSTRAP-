@@ -37,47 +37,11 @@ public class Partie extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		if (tourPourEviterAccesConcurrentiel==0) {
-			try {
-				Thread.sleep(0100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			tourPourEviterAccesConcurrentiel++;
-			
-		}
-		if (tourPourEviterAccesConcurrentiel==1) {
-			try {
-				Thread.sleep(0300);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			tourPourEviterAccesConcurrentiel++;
-			
-		}
-		if (tourPourEviterAccesConcurrentiel==2) {
-			try {
-				Thread.sleep(0500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			tourPourEviterAccesConcurrentiel++;
-			
-		}
-		if (tourPourEviterAccesConcurrentiel==3) {
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			tourPourEviterAccesConcurrentiel=0;
-		}
-		
-		
-		if(this.getServletContext().getAttribute("Partie terminee" + session.getAttribute("idPartie"))!=null){
+
+		if (this.getServletContext().getAttribute("Partie terminee" + session.getAttribute("idPartie")) != null) {
+			session.removeAttribute("idPartie");
 			response.sendRedirect("http://localhost:8080/codename2223/Index");
-		}
-		else {
+		} else {
 			if ((this.getServletContext().getAttribute("listeCartes" + session.getAttribute("idPartie")) == null)
 					&& (session.getAttribute("createur_" + session.getAttribute("idPartie")).equals(true))) {
 
@@ -87,7 +51,7 @@ public class Partie extends HttpServlet {
 				this.getServletContext().setAttribute("CodeName" + session.getAttribute("idPartie"), cd);
 				this.getServletContext().setAttribute("tourActuel" + session.getAttribute("idPartie"),
 						cd.getJoueurActuel());
-				
+
 				session.setAttribute("tourActuel",
 						this.getServletContext().getAttribute("tourActuel" + session.getAttribute("idPartie")));
 
@@ -96,7 +60,6 @@ public class Partie extends HttpServlet {
 			} else
 
 			{
-				System.out.println("JE METS A JOUR ///// JE METS A JOUR ");
 				session.setAttribute("listeCartes",
 						this.getServletContext().getAttribute("listeCartes" + session.getAttribute("idPartie")));
 				session.setAttribute("tourActuel",
@@ -104,7 +67,6 @@ public class Partie extends HttpServlet {
 			}
 			this.getServletContext().getRequestDispatcher("/Partie.jsp").forward(request, response);
 		}
-		
 
 	}
 
@@ -131,6 +93,16 @@ public class Partie extends HttpServlet {
 			if (nameAttribute.contains("carte")) {
 				String reponse = cd.verifierCarte(request.getParameter(nameAttribute),
 						(String) session.getAttribute("couleurEquipe"));
+				
+				if (reponse.equals("bonneReponse")) {
+					if(session.getAttribute("couleurEquipe").equals("rouge")) {
+						this.getServletContext().setAttribute("scoreRouge"+ session.getAttribute("idPartie"), cd.getScoreEquipe1());
+					}
+					if(session.getAttribute("couleurEquipe").equals("bleu")) {
+						this.getServletContext().setAttribute("scoreBleu"+ session.getAttribute("idPartie"), cd.getScoreEquipe2());
+					}
+					 
+				}
 				if (reponse.equals("mauvaiseReponse")) {
 					MajCodename(cd, session);
 					session.setAttribute("listeCartes",
@@ -139,14 +111,14 @@ public class Partie extends HttpServlet {
 				}
 				if (reponse.equals("Motinterdit")) {
 					this.getServletContext().setAttribute("Partie terminee" + session.getAttribute("idPartie"), true);
-					session.removeAttribute("idPartie");
 					
+
 				}
 
 			}
 			if (nameAttribute.contains("indice")) {
-				System.out.println(request.getParameter(nameAttribute));
-				this.getServletContext().setAttribute("indice", request.getParameter(nameAttribute));
+
+				this.getServletContext().setAttribute("indice"+session.getAttribute("idPartie"), request.getParameter(nameAttribute)); 
 				MajCodename(cd, session);
 
 			}

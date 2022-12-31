@@ -36,10 +36,9 @@ public class PreparationPartie extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession(true);
-		session.setAttribute("LancementPossibleOuNon", "");
+		session.setAttribute("LancementPossibleOuNon", "disabled");
 		if ((boolean) session.getAttribute("createur_" + session.getAttribute("idPartie")) == true) {
 
-			System.out.println(session.getAttribute("createur_" + session.getAttribute("idPartie")));
 			this.getServletContext().setAttribute((String) session.getAttribute("idPartie"),
 					session.getAttribute("partie"));
 			session.setAttribute("partieCourante", session.getAttribute("partie"));
