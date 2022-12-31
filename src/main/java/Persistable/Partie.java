@@ -6,13 +6,15 @@ public class Partie implements Persistable {
 	private Equipe Equipe2; 
 	private long id; 
 	private String equipeGagnante; 
-	
+	private boolean started =false; 
 	public Partie () {
 		
 	}
-	public Partie (Equipe Equipe1, Equipe Equipe2) {
+	public Partie (Equipe Equipe1, Equipe Equipe2, boolean started, long id) {
 		this.Equipe1 = Equipe1; 
-		this.Equipe2 = Equipe2; 
+		this.Equipe2 = Equipe2;
+		this.started = started; 
+		this.id = id; 
 		
 	}
 	
@@ -67,6 +69,12 @@ public class Partie implements Persistable {
 	}
 	public void setEquipeGagnante(String equipeGagnante) {
 		this.equipeGagnante = equipeGagnante;
+	}
+	public boolean isStarted() {
+		return started;
+	}
+	public void setStarted(boolean started) {
+		this.started = started;
 	}
 
 	

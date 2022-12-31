@@ -20,6 +20,10 @@ import jakarta.servlet.http.HttpSession;
 @jakarta.servlet.annotation.WebServlet("/Index")
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private long compteur_id_partie;
+	private long compteur_id_joueur;
+	private long compteur_id_equipe;
+	ArrayList<String> listeIdPartie;
 
 	/**
 	 * Default constructor.
@@ -34,76 +38,119 @@ public class Index extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
+		if (session.getAttribute("idPartie")!=null) {
+			
+			System.out.println("redirection PREPARATION PARTIE");
+			response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");
+			
+		}
+		else if (session.getAttribute("choixFait")!=null) {
+			this.getServletContext().getRequestDispatcher("/RejoindrePartie.jsp").forward(request, response);
+		}
+		else {
+			System.out.println("redirection INDEX");
+			this.getServletContext().getRequestDispatcher("/Index.jsp").forward(request, response);
+		}
 
-		this.getServletContext().getRequestDispatcher("/Index.jsp").forward(request, response);
+		
+	}
+
+	private Partie creationPartie() {
+
+		Equipe e1 = new Equipe("rouge", 0, compteur_id_equipe++);
+		Equipe e2 = new Equipe("bleue", 0, compteur_id_equipe++);
+		Partie pCourante = new Partie(e1, e2, false, compteur_id_partie);
+		return pCourante;
+
+	}
+
+	private int chercherIndexPartie(ArrayList<String> liste, String id) {
+		int i = 0;
+		for (String p : liste) {
+			System.out.println("p est " + p);
+			if (p.equals(id)) {
+				return i;
+			}
+			i++;
+		}
+		return -1;
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ArrayList<String> listeIdPartie = new ArrayList<String>(); 
+
 		HttpSession session = request.getSession(true);
-		long compteur_id_partie = 1;
+
 		Joueur j = new Joueur();
-	
 
 		Enumeration<String> parametres = request.getParameterNames();
 		while (parametres.hasMoreElements()) {
 			String nameAttribute = parametres.nextElement();
 			if (nameAttribute.contains("pseudo")) {
-
 				j.setPseudo(request.getParameter(nameAttribute));
-				session.setAttribute("objetJoueur", j); 
-				
-//				System.out.println(request.getParameter(nameAttribute));
+				j.setId(compteur_id_joueur++);
+				session.setAttribute("objetJoueur", j);
+				session.setAttribute("pseudo",request.getParameter(nameAttribute)); 
 			}
-			if (nameAttribute.contains("choixPartie")){
-				session.setAttribute("idPartie",request.getParameter(nameAttribute).toString());
-//				this.getServletContext().getRequestDispatcher("/PreparationPartie.jsp").forward(request, response);
-				session.setAttribute("créateur", false);
-				response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");//à changer ! 
-				
+			if (nameAttribute.contains("choixPartie")) {
+				String id = request.getParameter(nameAttribute).toString();
+				session.setAttribute("idPartie", id);
+				session.setAttribute("createur_" + session.getAttribute("idPartie"), false);
+				session.setAttribute("createur", false);
+				Partie pCourant = (Partie) this.getServletContext()
+						.getAttribute((String) session.getAttribute("idPartie"));
+				if (pCourant.isStarted()) {
+					System.out.println("Partie déjà lancée donc plus disponible");
+					ArrayList<String> liste = (ArrayList<String>) request.getServletContext()
+							.getAttribute("listePartie");
+					int index = chercherIndexPartie(liste, id);
+					System.out.println("id est " + id);
+					System.out.println(index);
+					if (index != -1) {
+						System.out.println("on supprime");
+						liste.remove(index);
+						response.sendRedirect("http://localhost:8080/codename2223/Index");
+					}
+
+				} else {
+					response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");// à changer !
+				}
+
 			}
 			if (nameAttribute.contains("choix")) {
 
 				if (request.getParameter(nameAttribute).toString().contains("CreerUnePartie")) {
-					Partie pCourante = new Partie();
-					Equipe e1 = new Equipe(); 
-					Equipe e2 = new Equipe(); 
-					pCourante.setEquipe1(e1);
-					pCourante.setEquipe2(e2);
-					String idCourant = String.valueOf(compteur_id_partie); 
-					pCourante.setId(compteur_id_partie);
-					listeIdPartie.add(idCourant); 
+					Partie pCourante = creationPartie();
 					session.setAttribute(String.valueOf(compteur_id_partie) + "joueurHote", j);
-					session.setAttribute("idPartie", idCourant);
+					System.out.println(compteur_id_partie);
+					session.setAttribute("idPartie", String.valueOf(compteur_id_partie));
 					session.setAttribute("partie", pCourante);
-
-					session.setAttribute("créateur", true);
-					
-					request.getServletContext().setAttribute("listePartie",listeIdPartie );
-					request.getServletContext().setAttribute("mutex", true); 
-//					System.out.println("Redirection à la page creationPartie.jsp");
-					compteur_id_partie++; 
-//					this.getServletContext().getRequestDispatcher("/PreparationPartie.jsp").forward(request, response);
-					response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");//à changer !
+					session.setAttribute("createur_" + session.getAttribute("idPartie"), true);
+					if ((listeIdPartie = (ArrayList<String>) request.getServletContext()
+							.getAttribute("listePartie")) != null) {
+						listeIdPartie.add(String.valueOf(compteur_id_partie));
+					} else {
+						listeIdPartie = new ArrayList<String>();
+						listeIdPartie.add(String.valueOf(compteur_id_partie));
+						request.getServletContext().setAttribute("listePartie", listeIdPartie);
+						request.getServletContext().setAttribute("mutex", true);
+					}
+					compteur_id_partie++;
+					response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");// à changer !
 				}
 				if (request.getParameter(nameAttribute).toString().contains("rejoindrePartie")) {
 
 					Enumeration<String> parametresServlet = this.getServletContext().getAttributeNames();
-//					System.out.println(Collections.list(parametresServlet).size());
 					if (Collections.list(parametresServlet).size() >= 14) {
 						System.out.println(parametresServlet);
-//						System.out.println("Redirection à la page rejoindrePartie.jsp");
-
 					}
-					if (!parametresServlet.hasMoreElements()) {
-//						System.out.println("Pas de serveurs disponibles ! ");
-					}
-//					response.sendRedirect("http://localhost:8080/CodeName/");
+					session.setAttribute("choixFait", true);
 					this.getServletContext().getRequestDispatcher("/RejoindrePartie.jsp").forward(request, response);
 				}
 			}

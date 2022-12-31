@@ -16,7 +16,6 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css%22%3E">
-<link rel="stylesheet" href="style.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
@@ -46,7 +45,7 @@
 
 							</div>
 
-							
+
 
 
 
@@ -79,12 +78,41 @@
 
 
 							<div class="form-button mt-3">
-								<button id="submit" type="submit" class="btn btn-primary">Terminé</button>
+								<button id="refreshButton1" type="submit"
+									class="btn btn-primary">Terminé</button>
 							</div>
 						</form>
 
 					</div>
 					<script src="form.js"></script>
+					<script type="text/javascript">
+						const webSocketUrl = "ws://localhost:8080/codename2223/refresh";
+						const webSocket = new WebSocket(webSocketUrl);
+						webSocket.onopen = function() {
+							console.log("Connection opened");
+						};
+
+						webSocket.onmessage = function(evt) {
+							console.log("Received message: " + evt.data);
+							// Refresh the page when a message is received
+							window.location.reload();
+						};
+
+						webSocket.onclose = function() {
+							console.log("Connection closed");
+						};
+
+						webSocket.onerror = function(error) {
+							console.log("Error: " + error);
+						};
+
+						const button1 = document
+								.getElementById("refreshButton1");
+						button1.addEventListener("click", function() {
+							webSocket.send("refresh");
+
+						});
+					</script>
 				</div>
 			</div>
 		</div>

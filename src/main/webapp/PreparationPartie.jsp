@@ -31,15 +31,17 @@
 		<div class="row">
 			<div class="form-holder">
 				<div class="form-content">
-					<div class="form-items">
-						<h3>Equipe 1 !</h3>
-						<p>Rejoingnez l'équipe 1 !</p>
-						<form class="requires-validation" action="PreparationPartie"
-							method="post" novalidate>
+					<form class="requires-validation" action="PreparationPartie"
+						method="post" novalidate>
+						<div class="form-items">
+							<h3>Equipe 1 !</h3>
+							<p>Rejoingnez l'équipe 1 !</p>
+
 							<div class="form-button mt-3">
-								<button id="submit" type="submit" class="btn btn-primary"
-									name="choixRoleEquipe1" value="DecodeurEquipe1">Rejoindre les décodeurs</button> <select
-									name='uuid'>
+								<button id="refreshButton1" type="submit" class="btn btn-primary"
+									name="choixRoleEquipe1" value="DecodeurEquipe1">Rejoindre
+									les décodeurs</button>
+								<select name='uuid'>
 									<c:forEach var="var"
 										items="${partieCourante.getEquipe1().getListeJoueurs()}">
 										<option id="${var}"><c:if
@@ -50,7 +52,7 @@
 								</select>
 							</div>
 							<div class="form-button mt-3">
-								<button id="submit" type="submit" class="btn btn-primary"
+								<button id="refreshButton2" type="submit" class="btn btn-primary"
 									name="choixRoleEquipe1" value="EspionEquipe1">Rejoindre
 									les espions</button>
 								<select name='uuid'>
@@ -69,18 +71,15 @@
 							<div class="invalid-feedback mv-up">
 								</br>Entrez votre choix s'il vous plait!
 							</div>
-						</form>
+						</div>
 
 
+						<div class="form-items">
+							<h3>Equipe 2 !</h3>
+							<p>Rejoingnez l'équipé 2 !</p>
 
-					</div>
-					<div class="form-items">
-						<h3>Equipe 2 !</h3>
-						<p>Rejoingnez l'équipé 2 !</p>
-						<form class="requires-validation" action="PreparationPartie"
-							method="post" novalidate>
 							<div class="form-button mt-3">
-								<button id="submit" type="submit" class="btn btn-primary"
+								<button id="refreshButton3" type="submit" class="btn btn-primary"
 									name="choixRoleEquipe2" value="DecodeurEquipe2">Rejoindre
 									les décodeurs</button>
 								<select name='uuid'>
@@ -94,7 +93,7 @@
 								</select>
 							</div>
 							<div class="form-button mt-3">
-								<button id="submit" type="submit" class="btn btn-primary"
+								<button id="refreshButton4" type="submit" class="btn btn-primary"
 									name="choixRoleEquipe2" value="EspionEquipe2">Rejoindre
 									les espions</button>
 								<select name='uuid'>
@@ -115,12 +114,77 @@
 							<div class="invalid-feedback mv-up">
 								</br>Entrez votre choix s'il vous plait!
 							</div>
-						</form>
 
-					</div>
 
-					<script src="form.js">
-						
+						</div>
+
+
+						<%-- <c:if test="${pageContext.servletContext.getAttribute('createur_' + session.getAttribute('idPartie')).equals(true)}"> --%>
+						<%-- <%=request.getServletContext().getAttribute("createur_" + session.getAttribute("idpartie"))%> --%>
+
+						<c:if test="${createur}">
+							<div class="form-button mt-3">
+								<button id="lancementPartie" type="submit" value="lancementPartie"
+									name="lancementPartie" class="btn btn-primary ${LancementPossibleOuNon}">Lancer
+									la partie</button>
+							</div>
+						</c:if>
+
+
+					</form>
+
+
+
+
+
+					<script src="form.js"></script>
+					<script type="text/javascript">
+					const webSocketUrl = "ws://localhost:8080/codename2223/refresh";
+					const webSocket = new WebSocket(webSocketUrl);
+					    webSocket.onopen = function() {
+					      console.log("Connection opened");
+					    };
+
+					    webSocket.onmessage = function(evt) {
+					      console.log("Received message: " + evt.data);
+					      // Refresh the page when a message is received
+					      window.location.reload();
+					    };
+
+					    webSocket.onclose = function() {
+					      console.log("Connection closed");
+					    };
+
+					    webSocket.onerror = function(error) {
+					      console.log("Error: " + error);
+					    };
+					    
+					    const button1 = document.getElementById("refreshButton1");
+					    button1.addEventListener("click", function() {
+					      webSocket.send("refresh");
+					      
+					    });
+					    const button2 = document.getElementById("refreshButton2");
+					    button2.addEventListener("click", function() {
+					      webSocket.send("refresh");
+					      
+					    });
+					    const button3 = document.getElementById("refreshButton3");
+					    button3.addEventListener("click", function() {
+					      webSocket.send("refresh");
+					      
+					    });
+					    const button4 = document.getElementById("refreshButton4");
+					    button4.addEventListener("click", function() {
+					      webSocket.send("refresh");
+					      
+					    });
+					    const button5 = document.getElementById("lancementPartie");
+					    button5.addEventListener("click", function() {
+					      webSocket.send("refresh");
+					      
+					    });
+					    
 					</script>
 				</div>
 

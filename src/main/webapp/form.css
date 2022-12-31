@@ -18,6 +18,7 @@ html, body {
 	overflow: hidden;
 }
 
+
 .form-holder {
 	display: flex;
 	flex-direction: column;
@@ -25,6 +26,11 @@ html, body {
 	align-items: center;
 	text-align: center;
 	min-height: 100vh;
+}
+
+.d-grid {
+	display: grid;
+	grid-template-rows: repeat(1, 110px);
 }
 
 .form-holder .form-content {
@@ -42,23 +48,58 @@ html, body {
 	padding: 60px;
 }
 
-.form-content .form-items {
-    border: 3px solid #fff;
-    padding: 40px;
-    display: inline-block;
-    width: 100%;
-    min-width: 540px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    text-align: left;
-    -webkit-transition: all 0.4s ease;
-    transition: all 0.4s ease;
+.equipe-rouge {
+	background-color: rgba(107, 17, 17, 0.5);
+	min-width: 60%
+}
+
+.equipe-bleue {
+	background-color: rgb(17, 133, 191, 0.1);
+	min-width: 60%;
+}
+
+.sideRouge {
+	background-color: rgba(107, 17, 17, 0.5);
+}
+
+.sideBleu {
+	background-color: rgb(17, 133, 191, 0.5);
+}
+
+.container-fluid {
+	width: 100% !important;
+	padding: 0;
+}
+
+.joueur {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 
+
+.form-content .form-items {
+	border: 3px solid #fff;
+	padding: 40px;
+	display: inline-block;
+	width: 100%;
+	min-width: 540px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	text-align: left;
+	-webkit-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.form-items {
+	display: flex;
+	flex-direction: column;
+}
+
 .form-content h3 {
-	color: #fff;
+	color: #ffffff;
 	text-align: left;
 	font-size: 28px;
 	font-weight: 600;
@@ -99,6 +140,13 @@ html, body {
 	margin-top: 16px;
 }
 
+.btn-outline-secondary {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+}
+
 .btn-primary {
 	background-color: #6C757D;
 	outline: none;
@@ -132,6 +180,11 @@ html, body {
 	margin-bottom: 14px;
 }
 
+
+.indice {
+	background-color: #121212;
+	color:white;
+}
 .form-content textarea:hover, .form-content textarea:focus {
 	border: 0;
 	background-color: #ebeff8;
@@ -145,6 +198,50 @@ html, body {
 
 .invalid-feedback {
 	color: #ff606e;
+}
+
+.carte {
+	padding-bottom: 5px;
+	min-width: 100px;
+	min-height: 100px;
+}
+
+.pseudo {
+	float: right;
+}
+
+.titreEquipe {
+	color: white;
+}
+
+.carte .rouge {
+	border-color: #ff4646;
+	background-color: rgba(107, 17, 17, 0.5);
+	color: #ff4646;
+}
+
+.carte .gris {
+	border-color: #1d1a18;
+	background-color: #757575;
+	color: #1d1a18;
+}
+
+.carte .blanc {
+	border-color: #ffffff;
+	background-color: rgb(255, 236, 226, 0.5);
+	color: rgb(252, 252, 252);
+}
+
+.carte .bleu {
+	border-color: #5fb7e7;
+	background-color: rgb(17, 133, 191, 0.5);
+	color: #5fb7e7;
+}
+
+.carte .noir {
+	border-color: #808080;
+	background-color: #121212;
+	color: #ffffff;
 }
 
 .valid-feedback {

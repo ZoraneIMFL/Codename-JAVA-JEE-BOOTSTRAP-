@@ -14,7 +14,7 @@
   <welcome-file-list>
     <welcome-file>Index.html</welcome-file>
     <welcome-file>Index.htm</welcome-file>
-    <welcome-file>Index.jsp</welcome-file>
+    <welcome-file>Index</welcome-file>
 
   </welcome-file-list>
 </web-app>
