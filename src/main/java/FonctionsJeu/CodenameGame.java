@@ -99,12 +99,12 @@ public class CodenameGame {
 		}
 	}
 
-	// Methode pour ajouter des points à l'equipe 1
+	// Methode pour ajouter des points a l'equipe 1
 	public void ajouterPointsEquipe1(int points) {
 		scoreEquipeRouge += points;
 	}
 
-	// Methode pour ajouter des points à l'equipe 2
+	// Methode pour ajouter des points a l'equipe 2
 	public void ajouterPointsEquipe2(int points) {
 		scoreEquipeBleue += points;
 	}
