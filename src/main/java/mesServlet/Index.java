@@ -106,7 +106,7 @@ public class Index extends HttpServlet {
 				Partie pCourant = (Partie) this.getServletContext()
 						.getAttribute((String) session.getAttribute("idPartie"));
 				if (pCourant.isStarted()) {
-					System.out.println("Partie Partie deja lancee donc plus disponible lancée donc plus disponible");
+					System.out.println("Partie Partie deja lancee donc plus disponible lancee donc plus disponible");
 					ArrayList<String> liste = (ArrayList<String>) request.getServletContext()
 							.getAttribute("listePartie");
 					int index = chercherIndexPartie(liste, id);
@@ -119,7 +119,7 @@ public class Index extends HttpServlet {
 					}
 
 				} else {
-					response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");// à changer !
+					response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");
 				}
 
 			}

@@ -22,14 +22,14 @@ public class CodenameGame {
 		String equipe = "";
 		String role = "";
 
-		// Déterminer l'équipe du joueur
+		// Determiner l'equipe du joueur
 		if (compteurTourEquipe % 2 == 1) {
 			equipe = "EquipeRouge";
 		} else {
 			equipe = "EquipeBleue";
 		}
 
-		// Déterminer le rôle du joueur
+		// Determiner le role du joueur
 		if (compteurTourJoueurParEquipe == 1) {
 			role = "Espion";
 		} else {
@@ -62,7 +62,7 @@ public class CodenameGame {
 			compteurTourJoueurParEquipe++;
 		}
 
-		// Si on a atteint la fin des tours d'equipe, on recommence à la première equipe
+		// Si on a atteint la fin des tours d'equipe, on recommence a la premiere equipe
 		if (compteurTourEquipe > 4) {
 			compteurTourEquipe = 1;
 		}
@@ -76,7 +76,7 @@ public class CodenameGame {
 		System.out.println(carte.getCouleur());
 		System.out.println(carte.getMot());
 
-		// Si la carte est de la couleur de l'équipe du joueur, on ajoute un point au
+		// Si la carte est de la couleur de l'equipe du joueur, on ajoute un point au
 		// score de l'equipe et on renvoie "bonneReponse"
 		if (couleurCarte.equals(equipeJoueur)) {
 			if (equipeJoueur.equals("rouge")) {
