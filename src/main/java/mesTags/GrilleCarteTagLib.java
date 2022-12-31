@@ -56,7 +56,7 @@ public class GrilleCarteTagLib extends TagSupport {
 			} else {
 				int index = 0;
 				if ((this.tourActuel.equals("EquipeRougeDécodeur") && this.couleurEquipe.equals("rouge"))
-						|| (this.tourActuel.equals("EquipeBleueDécodeur") && this.couleurEquipe.equals("bleu"))) {
+						|| (this.tourActuel.equals("EquipeBleueDecodeur") && this.couleurEquipe.equals("bleu"))) {
 					for (Carte carte : listeCartes) {
 						if (carte.isFind()) {
 							out.println("<div class='col d-grid carte'>");

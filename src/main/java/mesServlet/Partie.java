@@ -74,7 +74,7 @@ public class Partie extends HttpServlet {
 		}
 		
 		
-		if(this.getServletContext().getAttribute("Partie terminée" + session.getAttribute("idPartie"))!=null){
+		if(this.getServletContext().getAttribute("Partie terminee" + session.getAttribute("idPartie"))!=null){
 			response.sendRedirect("http://localhost:8080/codename2223/Index");
 		}
 		else {
@@ -138,7 +138,7 @@ public class Partie extends HttpServlet {
 
 				}
 				if (reponse.equals("Motinterdit")) {
-					this.getServletContext().setAttribute("Partie terminée" + session.getAttribute("idPartie"), true);
+					this.getServletContext().setAttribute("Partie terminee" + session.getAttribute("idPartie"), true);
 					session.removeAttribute("idPartie");
 					
 				}

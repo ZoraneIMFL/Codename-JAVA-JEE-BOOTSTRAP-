@@ -13,11 +13,11 @@ public class CodenameGame {
 	// Constructeur de la classe
 	public CodenameGame(ArrayList<Carte> listeCartes) {
 		this.setListeCartes(listeCartes);
-		this.compteurTourEquipe = 1; // Le premier tour est pour l'équipe 1
-		this.compteurTourJoueurParEquipe = 1; // Le premier joueur de l'équipe 1 commence
+		this.compteurTourEquipe = 1; // Le premier tour est pour l'equipe 1
+		this.compteurTourJoueurParEquipe = 1; // Le premier joueur de l'equipe 1 commence
 	}
 
-	// Méthode pour obtenir le joueur actuel
+	// Methode pour obtenir le joueur actuel
 	public String getJoueurActuel() {
 		String equipe = "";
 		String role = "";
@@ -33,42 +33,42 @@ public class CodenameGame {
 		if (compteurTourJoueurParEquipe == 1) {
 			role = "Espion";
 		} else {
-			role = "Décodeur";
+			role = "Decodeur";
 		}
 
-		// Retourner l'équipe et le rôle du joueur
+		// Retourner l'equipe et le role du joueur
 		return equipe + role;
 	}
 
-	// Méthode pour obtenir le score de l'équipe 1
+	// Methode pour obtenir le score de l'equipe 1
 	public int getScoreEquipe1() {
 		return scoreEquipeRouge;
 	}
 
-	// Méthode pour obtenir le score de l'équipe 2
+	// Methode pour obtenir le score de l'equipe 2
 	public int getScoreEquipe2() {
 		return scoreEquipeBleue;
 	}
 
-	// Méthode pour passer au tour suivant
+	// Methode pour passer au tour suivant
 	public void passerAuTourSuivant() {
-		// Si c'est le dernier joueur de l'équipe, on passe à l'équipe suivante
+		// Si c'est le dernier joueur de l'equipe, on passe à l'equipe suivante
 		if (compteurTourJoueurParEquipe == 2) {
 			compteurTourEquipe++;
 			compteurTourJoueurParEquipe = 1;
 		}
-		// Sinon, on passe au joueur suivant de l'équipe
+		// Sinon, on passe au joueur suivant de l'equipe
 		else {
 			compteurTourJoueurParEquipe++;
 		}
 
-		// Si on a atteint la fin des tours d'équipe, on recommence à la première équipe
+		// Si on a atteint la fin des tours d'equipe, on recommence à la première equipe
 		if (compteurTourEquipe > 4) {
 			compteurTourEquipe = 1;
 		}
 	}
 
-	// Méthode pour vérifier si une carte choisie par le joueur est de la bonne
+	// Methode pour verifier si une carte choisie par le joueur est de la bonne
 	// couleur
 	public String verifierCarte(String indexCarte, String equipeJoueur) {
 		Carte carte = getListeCartes().get(Integer.parseInt(indexCarte));
@@ -77,7 +77,7 @@ public class CodenameGame {
 		System.out.println(carte.getMot());
 
 		// Si la carte est de la couleur de l'équipe du joueur, on ajoute un point au
-		// score de l'équipe et on renvoie "bonneReponse"
+		// score de l'equipe et on renvoie "bonneReponse"
 		if (couleurCarte.equals(equipeJoueur)) {
 			if (equipeJoueur.equals("rouge")) {
 				scoreEquipeRouge++;
@@ -99,12 +99,12 @@ public class CodenameGame {
 		}
 	}
 
-	// Méthode pour ajouter des points à l'équipe 1
+	// Methode pour ajouter des points à l'equipe 1
 	public void ajouterPointsEquipe1(int points) {
 		scoreEquipeRouge += points;
 	}
 
-	// Méthode pour ajouter des points à l'équipe 2
+	// Methode pour ajouter des points à l'equipe 2
 	public void ajouterPointsEquipe2(int points) {
 		scoreEquipeBleue += points;
 	}
