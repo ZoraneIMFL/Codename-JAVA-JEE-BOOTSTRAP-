@@ -1,28 +1,28 @@
-Bière
-sifflet
-tortu
-balançoir
-couteau
-table
-trousse
-souris
-cheveux
-avion
-cerveau
-train
-Camion
-langue
-yeux
-Bonjour
-Bonne Nuit
-Bonsoir
-slip
-debain
-Bonsoir
-Frisbee
-Bonsoir
-Bonsoir
-Bonsoir
+Polymorphisme
+Machine
+Opération
+Bytecode
+Redéfinition
+Pointeur
+Contrôleur
+Abstraction
+Interprétation
+Surcharge
+Fonction
+Vue
+Interface
+Association
+Type
+Metaclasse
+Modèle
+Trait
+Multiplicité
+Covariance
+Objet
+Relation
+Compilation
+Virtuelle
+Héritage
 
 
 

@@ -73,8 +73,6 @@ public class CodenameGame {
 	public String verifierCarte(String indexCarte, String equipeJoueur) {
 		Carte carte = getListeCartes().get(Integer.parseInt(indexCarte));
 		String couleurCarte = carte.getCouleur();
-		System.out.println(carte.getCouleur());
-		System.out.println(carte.getMot());
 
 		// Si la carte est de la couleur de l'equipe du joueur, on ajoute un point au
 		// score de l'equipe et on renvoie "bonneReponse"

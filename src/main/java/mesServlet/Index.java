@@ -41,7 +41,7 @@ public class Index extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		if (session.getAttribute("idPartie")!=null) {
 			
-			response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");
+			response.sendRedirect("/codename2223/PreparationPartie");
 			
 		}
 		else if (session.getAttribute("choixFait")!=null) {
@@ -111,11 +111,11 @@ public class Index extends HttpServlet {
 					if (index != -1) {
 
 						liste.remove(index);
-						response.sendRedirect("http://localhost:8080/codename2223/Index");
+						response.sendRedirect("/codename2223/Index");
 					}
 
 				} else {
-					response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");
+					response.sendRedirect("/codename2223/PreparationPartie");
 				}
 
 			}
@@ -138,7 +138,7 @@ public class Index extends HttpServlet {
 						request.getServletContext().setAttribute("mutex", true);
 					}
 					compteur_id_partie++;
-					response.sendRedirect("http://localhost:8080/codename2223/PreparationPartie");// à changer !
+					response.sendRedirect("/codename2223/PreparationPartie");// à changer !
 				}
 				if (request.getParameter(nameAttribute).toString().contains("rejoindrePartie")) {
 

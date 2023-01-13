@@ -25,7 +25,6 @@ public class PreparationPartieSocket{
     }
     @OnMessage
       public void onMessage(String message, Session session) throws IOException {
-        // recup la game
         for (Session client: clients) {
           client.getBasicRemote().sendText(message);
           System.out.println(client.getId());

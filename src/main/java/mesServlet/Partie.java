@@ -20,7 +20,6 @@ import jakarta.servlet.http.HttpSession;
 public class Partie extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private GenerateurMot generateur = new GenerateurMot();
-	private int tourPourEviterAccesConcurrentiel;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -37,10 +36,21 @@ public class Partie extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-
-		if (this.getServletContext().getAttribute("Partie terminee" + session.getAttribute("idPartie")) != null) {
+		
+		if (this.getServletContext().getAttribute("Partie terminee Index" + session.getAttribute("idPartie"))!=null) {
 			session.removeAttribute("idPartie");
-			response.sendRedirect("http://localhost:8080/codename2223/Index");
+			
+			if (session.getAttribute("choixFait")!=null) {
+				session.removeAttribute("choixFait"); 
+			}
+			response.sendRedirect("/codename2223/Index");
+		}
+
+		else if (this.getServletContext().getAttribute("Partie terminee" + session.getAttribute("idPartie")) != null) {
+			
+			this.getServletContext().getRequestDispatcher("/Vainqueur.jsp").forward(request, response);
+			
+//			response.sendRedirect("/codename2223/Index");
 		} else {
 			if ((this.getServletContext().getAttribute("listeCartes" + session.getAttribute("idPartie")) == null)
 					&& (session.getAttribute("createur_" + session.getAttribute("idPartie")).equals(true))) {
@@ -97,9 +107,17 @@ public class Partie extends HttpServlet {
 				if (reponse.equals("bonneReponse")) {
 					if(session.getAttribute("couleurEquipe").equals("rouge")) {
 						this.getServletContext().setAttribute("scoreRouge"+ session.getAttribute("idPartie"), cd.getScoreEquipe1());
+						if(cd.getScoreEquipe1()>=9) {
+							this.getServletContext().setAttribute("EquipeVictorieuse" + session.getAttribute("idPartie"), "rouge");
+							this.getServletContext().setAttribute("Partie terminee" + session.getAttribute("idPartie"), true);
+						}
 					}
 					if(session.getAttribute("couleurEquipe").equals("bleu")) {
 						this.getServletContext().setAttribute("scoreBleu"+ session.getAttribute("idPartie"), cd.getScoreEquipe2());
+						if(cd.getScoreEquipe2()>=8) {
+							this.getServletContext().setAttribute("EquipeVictorieuse" + session.getAttribute("idPartie"), "bleue");
+							this.getServletContext().setAttribute("Partie terminee" + session.getAttribute("idPartie"), true);
+						}
 					}
 					 
 				}
@@ -110,6 +128,12 @@ public class Partie extends HttpServlet {
 
 				}
 				if (reponse.equals("Motinterdit")) {
+					if(session.getAttribute("couleurEquipe").equals("rouge")) {
+						this.getServletContext().setAttribute("EquipeVictorieuse" + session.getAttribute("idPartie"), "bleue");
+					}
+					else {
+						this.getServletContext().setAttribute("EquipeVictorieuse" + session.getAttribute("idPartie"), "rouge");
+					}
 					this.getServletContext().setAttribute("Partie terminee" + session.getAttribute("idPartie"), true);
 					
 
@@ -118,9 +142,13 @@ public class Partie extends HttpServlet {
 			}
 			if (nameAttribute.contains("indice")) {
 
-				this.getServletContext().setAttribute("indice"+session.getAttribute("idPartie"), request.getParameter(nameAttribute)); 
+				this.getServletContext().setAttribute("indice"+session.getAttribute("idPartie"), request.getParameter(nameAttribute));
 				MajCodename(cd, session);
 
+			}
+			if(nameAttribute.contains("RetourIndex")) {
+				this.getServletContext().setAttribute("Partie terminee Index" + session.getAttribute("idPartie"), true);
+				
 			}
 
 		}

@@ -67,7 +67,7 @@ public class PreparationPartie extends HttpServlet {
 
 			}
 
-			response.sendRedirect("http://localhost:8080/codename2223/Partie");
+			response.sendRedirect("/codename2223/Partie");
 		} else {
 
 			this.getServletContext().getRequestDispatcher("/PreparationPartie.jsp").forward(request, response);
@@ -151,7 +151,7 @@ public class PreparationPartie extends HttpServlet {
 
 			if (nameAttribute.contains("lancementPartie")) {
 				pCourant.setStarted(true);
-				response.sendRedirect("http://localhost:8080/codename2223/Partie");
+				response.sendRedirect("/codename2223/Partie");
 			}
 
 		}

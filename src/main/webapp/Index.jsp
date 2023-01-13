@@ -85,7 +85,7 @@
 
 					</div>
 					<script src="form.js"></script>
-					<script type="text/javascript">
+					<!-- <script type="text/javascript">
 						const webSocketUrl = "ws://localhost:8080/codename2223/refresh";
 						const webSocket = new WebSocket(webSocketUrl);
 						webSocket.onopen = function() {
@@ -112,7 +112,7 @@
 							webSocket.send("refresh");
 
 						});
-					</script>
+					</script> -->
 				</div>
 			</div>
 		</div>

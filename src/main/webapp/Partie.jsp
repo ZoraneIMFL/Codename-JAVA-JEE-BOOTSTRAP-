@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Index</title>
+<title>Partie</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
@@ -136,7 +136,7 @@
 						items="${partieCourante.getEquipe2().getListeJoueurs()}">
 						<div class="joueur">
 							<p>
-								<strong>${joueur.getPseudo()}</strong> : <em>${role}</em>
+								<strong>${joueur.getPseudo()}</strong> : <em>${joueur.getRole()}</em>
 							</p>
 						</div>
 					</c:forEach>

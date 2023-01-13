@@ -1,10 +1,7 @@
 package FonctionsJeu;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -18,9 +15,6 @@ public class GenerateurMot {
 	public ArrayList<Carte> genere() throws FileNotFoundException {
 		ArrayList<String> listeMots = new ArrayList<String>();
 		ArrayList<Carte> listeCartes = new ArrayList<Carte>();
-//		InputStream fichier = getClass().getClassLoader().getResourceAsStream("C:\\Users\\Admin\\git\\codename\\src\\main\\java\\FonctionsJeu\\mots.txt");
-//		BufferedReader br = new BufferedReader(new InputStreamReader(fichier));
-
 		Scanner scanner = new Scanner(new File("C:\\Users\\Admin\\git\\codename\\src\\main\\resources\\mots.txt"));
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
@@ -50,11 +44,6 @@ public class GenerateurMot {
 
 		}
 		Collections.shuffle(listeCartes);
-
-//		for (int i = 0; i < 25; i++) {
-//			System.out.println(i);
-//			System.out.println(listeCartes.get(i).getMot());
-//		}
 		return listeCartes;
 
 	}
