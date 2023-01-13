@@ -22,3 +22,8 @@ Sur le screen shot ci dessous, nous sommes dans la phase de "préparation de par
 
 ![Image 4 PreparationPartie](images/image4.png)
 
+5. **Lancement de la partie**
+
+Sur le screen shot ci dessous, nous remarquon le boutons "Lancer la partie" n'est disponible que lorsqu'il y a au moins quatre joueurs dans la partie, mais également au moins un joueur par rôle, et que vous êtes créateur de la partie en cours. Donc sur le screen nous voyons à gauche le navigateur du créateur et à droite d'un autre joueur. Cependant ce projet n'est pas compatible pour jouer à plus de quatre joueurs et plus de deux par rôle.  
+
+![Image 5 LancementPartie](images/image5.png)
