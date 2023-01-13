@@ -51,7 +51,7 @@ Sur le screen shot ci dessous nous voyons la manche du décodeur de l'équipe ro
 Sur les deux screen shot ci dessous nous retrovons l'affichage de l'équipe gagnante. Rouge si le décodeur de l'équipe bleue a choisi la carte interdite ou le décodeur de l'équipe rouge a trouvé toutes les cartes rouges. 
 Bleu si le décodeur de l'équipe rouge a choisi la carte interdite ou le décodeur de l'équipe bleue a trouvé toutes les cartes bleues. 
 
+![Image 9 VainqueurRouge](images/image9.png)
+![Image 9 VainqueurBleu](images/image10.png)
 
-![Image 9 VainqueurBleu](images/image9.png)
-![Image 9 VainqueurRouge](images/image10.png)
 
