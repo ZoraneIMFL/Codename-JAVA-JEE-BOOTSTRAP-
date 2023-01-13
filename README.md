@@ -55,3 +55,10 @@ Bleu si le décodeur de l'équipe rouge a choisi la carte interdite ou le décod
 ![Image 9 VainqueurBleu](images/image10.png)
 
 
+
+10. **Ps**
+
+On retrouvera certaines complications avec certains navigateurs (pour mon cas google Chrome), où il sera nécessaire de cliquer plusieurs fois pour valider notre choix, notemment lorsqu'on choisi le rôle voulu. Parfois il sera également nécessaire d'actualiser la page du créateur si le bouton "lancer la partie" n'est toujours pas cliquable bien que toutes les conditions sont réunies. Et lors du déroulement de la partie il est fortement déconseillé d'actualiser manuellement les pages car cela peut créer des dysfonctionnements non souhaitées. Toutes ces anomalises sont dûes aux webSocket se chargeant d'actualiser. 
+
+
+
