@@ -1,1 +1,1 @@
-![Image 1 Index](images/Index)
+![Image 1 Index](images/Index.png)
