@@ -1,1 +1,1 @@
-![Image 1 Index](Index)
+![Image 1 Index](images/Index)
