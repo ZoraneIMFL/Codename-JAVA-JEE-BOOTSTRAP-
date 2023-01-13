@@ -30,7 +30,7 @@ Sur le screen shot ci dessous, nous remarquon le boutons "Lancer la partie" n'es
 
 6. **Partie**
 
-Sur le screen shot ci dessous bien que pas très élégant dû aux quatre fenêtres, montre que les décodeurs ont leurs cartes en grisées (les deux fenêtes à gauche), tandis que les espions ont toutes les cartes avec leur couleur. Nous remarquons également que c'est au tour de l'espion de l'equipe rouge ("zorane1") de jouer car c'est la première manche et que l'équipe rouge a le plus de mot à trouver (neuf mots), donc la première à jouer. 
+Sur le screen shot ci dessous bien que pas très élégant dû aux quatre fenêtres, montre que les décodeurs ont leurs cartes grisées (les deux fenêtes à gauche), tandis que les espions ont toutes les cartes avec leur couleur. Nous remarquons également que c'est au tour de l'espion de l'equipe rouge ("zorane1") de jouer car c'est la première manche et que l'équipe rouge a le plus de mot à trouver (neuf mots), donc la première à jouer. 
 
 ![Image 6 Partie](images/image6.png)
 
@@ -42,7 +42,7 @@ Sur le screen shot ci dessous nous rentrons plus en détails concernant la premi
 
 8. **Deuxième manche**
 
-Sur le screen shot ci dessous nous voyons la manche du décodeur de l'équipe rouge qui a d'ores et déjà fait deux choix qui sont avéré, donc ces derniers se sont mis à jour en montrant leur couleur à tous les décodeurs de la partie. Le score de l'équipe rouge s'est également incémenté de deux comme on peut l'apercevoir en haut à gauche. Et nous retrouvons bien entendu l'indice de notre espion en haut de la page, juste au dessus de la grille.
+Sur le screen shot ci dessous nous voyons la manche du décodeur de l'équipe rouge qui a d'ores et déjà fait deux choix qui sont avérés, donc ces derniers se sont mis à jour en montrant leur couleur à tous les décodeurs de la partie. Le score de l'équipe rouge s'est également incrémenté de deux comme on peut l'apercevoir en haut à gauche. Et nous retrouvons bien entendu l'indice de notre espion en haut de la page, juste au dessus de la grille.
 
 ![Image 8 deuxièmeManche](images/image8.png)
 
