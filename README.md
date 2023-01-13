@@ -39,3 +39,19 @@ Sur le screen shot ci dessous bien que pas très élégant dû aux quatre fenêt
 Sur le screen shot ci dessous nous rentrons plus en détails concernant la première manche. Comme c'est la première manche le score des deux équipes est à null comme indiqué en haut à droite et gauche. Il n'y a pas d'indice pour l'instant donc initialisé à null également. En dessous de la grille des cartes nous avons le champ où l'on doit indiquer notre indice (indice + nombre de mots associés) et nous envoyons l'indice en appuyant sur le boutton envoyer. Néanmoins aucune vérfication n'est faite sur l'indice, cette dernière est laissée à la bonne foi et au fair play des joueurs. 
 
 ![Image 7 PremièreManche](images/image7.png)
+
+8. **Deuxième manche**
+
+Sur le screen shot ci dessous nous voyons la manche du décodeur de l'équipe rouge qui a d'ores et déjà fait deux choix qui sont avéré, donc ces derniers se sont mis à jour en montrant leur couleur à tous les décodeurs de la partie. Le score de l'équipe rouge s'est également incémenté de deux comme on peut l'apercevoir en haut à gauche. Et nous retrouvons bien entendu l'indice de notre espion en haut de la page, juste au dessus de la grille.
+
+![Image 8 deuxièmeManche](images/image8.png)
+
+9. **Affichage du vainqueur**
+
+Sur les deux screen shot ci dessous nous retrovons l'affichage de l'équipe gagnante. Rouge si le décodeur de l'équipe bleue a choisi la carte interdite ou le décodeur de l'équipe rouge a trouvé toutes les cartes rouges. 
+Bleu si le décodeur de l'équipe rouge a choisi la carte interdite ou le décodeur de l'équipe bleue a trouvé toutes les cartes bleues. 
+
+
+![Image 9 VainqueurBleu](images/image9.png)
+![Image 9 VainqueurRouge](images/image10.png)
+
