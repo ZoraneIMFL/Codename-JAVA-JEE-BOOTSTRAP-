@@ -12,8 +12,13 @@ Sur le screen shot ci dessous, cette fois ci le premier navigateur a créé une 
 
 3. **Choix de la partie**
 
-Sur le screen shot ci dessous, les trois navigateurs ayant fait le choix de rejoindre une partie, se retrouvent sur la page où ils doivent choisir l'id de la partie. 
+Sur le screen shot ci dessous, les trois navigateurs ayant fait le choix de rejoindre une partie, se retrouvent sur la page où ils doivent choisir l'identifiant de la partie souhaitée. (Parfois il est nécessaire de cliquer sur la liste déroulante, afin de choisir une partie spécifique) 
 
 ![Image 3 ChoixPartie](images/image3.png)
 
+4. **Choix d'équipe et de rôle**
+
+Sur le screen shot ci dessous, nous sommes dans la phase de "préparation de partie", les joueurs y décideront leur équipe et leur rôle. Néanmoins il faut se méfier de la liste déroulante car parfois elle n'affiche pas le pseudo en tête de liste, cela implique qu'on puisse penser que notre choix ne s'est pas fait. Donc il vous sera nécessaire de cliquer afin de voir toute la liste. 
+
+![Image 4 PreparationPartie](images/image4.png)
 
