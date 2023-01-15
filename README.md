@@ -64,6 +64,8 @@ On retrouvera certaines complications avec certains navigateurs (pour mon cas go
 
 11. **Modèle de données**
 
+
+```plantuml
 @startuml
 
 entity "Joueur" as j{
@@ -110,6 +112,6 @@ e "2" --- "1" p
 
 je  ---  j
 je  ---  e
-
+```
 
 
