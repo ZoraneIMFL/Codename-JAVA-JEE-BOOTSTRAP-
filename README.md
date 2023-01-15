@@ -62,3 +62,54 @@ On retrouvera certaines complications avec certains navigateurs (pour mon cas go
 
 
 
+11. **Modèle de données**
+
+@startuml
+
+entity "Joueur" as j{
+* id_joueur : number
+pseudo : String
+role : String
+}
+@enduml
+
+@startuml
+entity "Equipe" as e{
+* id_equipe : number
+nom_equipe : String
+couleur : String
+score : number
+}
+@enduml
+
+@startuml
+entity "Partie" as p{
+* id_partie : number
+id_equipe1 : number  <<FK>>
+id_equipe2 : number <<FK>>
+started : bool
+equipegagnante: String
+}
+
+@enduml
+
+
+
+@startuml
+entity "JoueurEquipe" as je{
+id_equipe : number <<FK>>
+id_joueur : number <<FK>>
+}
+
+@enduml
+
+
+j "2..*" --- "1" e
+
+e "2" --- "1" p
+
+je  ---  j
+je  ---  e
+
+
+
