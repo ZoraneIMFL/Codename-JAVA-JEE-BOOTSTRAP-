@@ -1,0 +1,42 @@
+variables:
+  GIT_STRATEGY: clone
+  GIT_CHECKOUT: "true"
+  GIT_SUBMODULE_STRATEGY: recursive
+  PROXY: "-Dhttp.proxyHost=cache-etu.univ-artois.fr -Dhttp.proxyPort=3128 -Dhttps.proxyHost=cache-etu.univ-artois.fr -Dhttps.proxyPort=3128 -Dhttp.nonProxyHosts=localhost"
+  SONARINFO: "-Dsonar.host.url=http://sonarqube.univ-artois.fr/ -Dsonar.login=89e2c1d100149c1a918da1ba05326662afa656e9 -Dsonar.projectName=codename  -Dsonar.projectKey=codename"
+
+stages:
+- build
+- test
+- CODE-QUALITY
+
+
+
+
+gradle:
+  image: gradle:7.2.0-jdk11
+  stage: build
+  script: 
+  - gradle --warning-mode all $PROXY build
+
+  tags:
+    - docker2
+
+test:
+  image: gradle:7.2.0-jdk17
+  stage: test
+  script: 
+  - gradle $PROXY test
+  tags:
+    - docker2
+
+
+
+sonarqube:
+  stage: CODE-QUALITY
+  image: gradle:7.3-jdk17
+  allow_failure: true
+  script:
+    - "gradle $PROXY $SONARINFO sonarqube"
+  tags:
+    - docker2
