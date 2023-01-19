@@ -60,14 +60,6 @@ public class PreparationPartie extends HttpServlet {
 		}
 
 		if (((Partie) this.getServletContext().getAttribute((String) session.getAttribute("idPartie"))).isStarted()) {
-			if ((session.getAttribute("createur_" + session.getAttribute("idPartie")).equals(false))) {
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
-			}
 
 			response.sendRedirect("http://localhost:8080/"+nomProjet+"/Partie");
 		} else {
